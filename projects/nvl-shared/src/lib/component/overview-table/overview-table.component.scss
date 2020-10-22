@@ -1,0 +1,52 @@
+@media screen and (max-width: 900px) {
+  .desktop-hidden {
+    display: initial;
+  }
+
+  .mobile-hidden {
+    display: none;
+  }
+
+  .detail-container {
+    display: initial;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .desktop-hidden {
+    display: none;
+  }
+
+  .mobile-hidden {
+    display: initial;
+  }
+
+  .detail-container {
+    display: none;
+  }
+
+}
+
+.ngx-datatable.material .datatable-body .datatable-row-detail {
+  background: transparent;
+  padding: 0px;
+}
+
+.ngx-datatable.material .datatable-row-detail {
+  overflow: hidden;
+}
+
+datatable-scroller {
+  width: 100% !important;
+}
+
+.ngx-datatable.material .datatable-body .datatable-row-detail {
+  padding-left: 60px;
+  font-size: 14px
+}
+
+.action-mat-slide-toggle {
+  padding: 0.4em;
+  font-size: 15px;
+  margin-left: 6px;
+}

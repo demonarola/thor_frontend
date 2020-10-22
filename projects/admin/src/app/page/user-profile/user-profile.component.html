@@ -1,0 +1,110 @@
+<div class="container">
+  <form
+    name="newForm"
+    #newForm="ngForm">
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{'password' | translate}}</mat-panel-title>
+          <mat-panel-description>{{'change-password' | translate}}</mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+          <input
+            matInput
+            type="password"
+            id="password"
+            name="password"
+            [(ngModel)]="passwordNew"
+            placeholder="{{'new-password-ph' | translate}}">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            type="password"
+            id="oldPassword"
+            name="oldPassword"
+            [(ngModel)]="passwordOld"
+            placeholder="{{'old-password-ph' | translate}}">
+        </mat-form-field>
+
+        <button
+          mat-flat-button
+          color="accent"
+          (click)="changePassword()">
+          {{'save' | translate}}
+        </button>
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{'map_pool_time' | translate}}</mat-panel-title>
+          <mat-panel-description>{{'change-map-pool-time' | translate}}</mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+          <input
+            matInput
+            id="mapPoolTime"
+            name="mapPoolTime"
+            [(ngModel)]="mapPoolTime"
+            placeholder="{{'map_pool_time' | translate}}">
+        </mat-form-field>
+
+        <button
+          mat-flat-button
+          (click)="changeMapPoolTime()"
+          color="accent">
+          {{'save' | translate}}
+        </button>
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{'timezone' | translate}}</mat-panel-title>
+          <mat-panel-description>{{'timezone-desc' | translate}}</mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <ng-select
+          appendTo="body"
+          [items]="(timezones$ | async)?.data"
+          bindLabel="name"
+          bindValue="id"
+          placeholder="{{'timezone' | translate}}"
+          name="timezone"
+          [(ngModel)]="timezoneId">
+        </ng-select>
+
+        <button
+          mat-flat-button
+          (click)="changeTimezone()"
+          color="accent">
+          {{'save' | translate}}
+        </button>
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{'app.language' | translate}}</mat-panel-title>
+          <mat-panel-description>{{'app.language.desc' | translate}}</mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field class="pl-1 pr-1 mt-1">
+          <mat-label>{{'app.language' | translate}}</mat-label>
+          <mat-select [(value)]="selectedLocale" required (selectionChange)="languageChange($event)">
+            <mat-option *ngFor="let locale of env.locales" [value]="locale.locale"> {{locale.label | translate}}</mat-option> 
+          </mat-select>
+        </mat-form-field>
+
+      </mat-expansion-panel>
+
+    </mat-accordion>
+
+  </form>
+
+</div>
